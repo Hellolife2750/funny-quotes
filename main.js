@@ -59,13 +59,11 @@ function refreshAudios() {
 
     // Vérifier si le nom du fichier audio contient le terme de recherche
     if (audioFileName.includes(searchValue)) {
-      // Créer un élément audio pour chaque fichier audio correspondant
-      const audioElement = document.createElement('audio');
-      audioElement.controls = true;
-      audioElement.src = audioPath + audioFile;
 
-      // Ajouter l'élément audio au conteneur d'audios
-      audiosContainer.appendChild(audioElement);
+      audiosContainer.insertAdjacentHTML('beforeend', `
+      <p class="audio-tag">${audioFile}</p>
+      <audio src="${audioPath + audioFile}" controls></audio>
+      `);
     }
   }
 }
