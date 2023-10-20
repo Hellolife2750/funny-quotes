@@ -29,6 +29,16 @@ body {
   margin-bottom: 1rem;
 }
 
+#search-container .down {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#search-container .down .classic-btn {
+  margin-right: 1rem;
+}
+
 .classic-btn {
   padding: .5rem;
   border-radius: .5rem;

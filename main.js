@@ -146,6 +146,41 @@ document.getElementById('dl-all-btn').addEventListener('click', function () {
   });
 });
 
+const readAllBtn = document.getElementById('read-all-btn');
+let isReading = false; // Variable pour suivre l'état de la lecture automatique
+
+readAllBtn.addEventListener('click', () => {
+  const audios = document.querySelectorAll('.single-audio-container audio');
+
+  if (!isReading) {
+    isReading = true;
+    readAllBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+
+    // Fonction pour jouer les audios en séquence
+    function playAudiosSequentially(index) {
+      if (index < audios.length && isReading) {
+        audios[index].play();
+        audios[index].addEventListener('ended', () => {
+          playAudiosSequentially(index + 1);
+        });
+      } else {
+        // Toute la lecture est terminée
+        isReading = false;
+        readAllBtn.innerHTML = '<i class="fa-solid fa-play"></i>  Lire';
+      }
+    }
+
+    // Commencez la lecture
+    playAudiosSequentially(0);
+  } else {
+    // Arrêtez la lecture
+    isReading = false;
+    readAllBtn.innerHTML = '<i class="fa-solid fa-play"></i> Lire';
+    audios.forEach(audio => audio.pause());
+  }
+});
+
+
 
 
 
