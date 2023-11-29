@@ -13,3 +13,5 @@ $audioFiles | Out-File -FilePath $outputFile -Encoding utf8
 
 Write-Host "Fichiers audio listés dans audiosNames.txt sous forme de tableau JavaScript :"
 Get-Content -Path $outputFile
+
+.\..\update_repos.ps1
